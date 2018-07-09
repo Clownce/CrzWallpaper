@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/CrzWallpaper">
+        <file>Resources/cat.png</file>
+        <file>Resources/quit.png</file>
+        <file>Resources/startupoff.png</file>
+        <file>Resources/startupon.png</file>
+    </qresource>
+</RCC>
