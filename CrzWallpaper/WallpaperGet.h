@@ -6,6 +6,7 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QFile>
+#include <QDir>
 #include <QIODevice>
 #include <QSettings>
 #include <QImage>

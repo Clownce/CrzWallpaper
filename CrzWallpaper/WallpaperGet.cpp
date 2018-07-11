@@ -1,5 +1,7 @@
 #include "WallpaperGet.h"
 #include "WallpaperConfig.h"
+#include <atlbase.h>
+#include <atlconv.h>
 
 WallpaperGet::WallpaperGet(QObject *parent)
 	: QObject(parent)
@@ -68,6 +70,10 @@ void WallpaperGet::downloadFinished()
 	QImage img;
 	img.load("./Wallpaper/img.jpg");
 	img.save("./Wallpaper/img.bmp");
+	QFileInfo fileInfo("./Wallpaper/img.bmp");
+	std::string sStr= fileInfo.absoluteFilePath().toStdString();
+	USES_CONVERSION;
+	PWSTR pStr = A2W(sStr.c_str());
 	WallpaperConfig wallConfig;
-	wallConfig.SetDesktopWallpaper(L"./Wallpaper/img.bmp", WallpaperStyle::Fill);
+	wallConfig.SetDesktopWallpaper(pStr, WallpaperStyle::Fill);
 }
