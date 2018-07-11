@@ -3,4 +3,4 @@
 
 ![pic](https://github.com/loki1412/CrzWallpaper/blob/master/screen.jpg)
 
-* 下载：[CrzWallpaper](https://github.com/loki1412/CrzWallpaper/releases/download/1.0.0/CrzWallpaper.exe)
+* 下载：[CrzWallpaper](https://github.com/loki1412/CrzWallpaper/releases/download/1.1.0/CrzWallpaper.exe)
