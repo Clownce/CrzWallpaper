@@ -19,15 +19,21 @@ Wallpaper::Wallpaper(QObject *parent)
 	actStartup->setIcon(QIcon(":/CrzWallpaper/Resources/startupon.png"));
 	actName = new QAction(menu);
 	actName->setEnabled(false);
+	actUpdate = new QAction(menu);
+	actUpdate->setText("Ë¢ÐÂ");
+	actUpdate->setIcon(QIcon(":/CrzWallpaper/Resources/update.png"));
 	menu->addAction(actName);
 	menu->addSeparator();
+	menu->addAction(actUpdate);
 	menu->addAction(actStartup);
 	menu->addAction(actQuit);
 	this->setContextMenu(menu);
 	wallpaperGet->setWallpaper();
+	connect(actUpdate, SIGNAL(triggered()), this, SLOT(updateSlot()));
 	connect(actStartup, SIGNAL(triggered()), this, SLOT(startupSlot()));
 	connect(actQuit, SIGNAL(triggered()), this, SLOT(quitSlot()));
 	connect(wallpaperGet, SIGNAL(transNameSig(QString)), this, SLOT(showNameSlot(QString)));
+	
 	QString appName = QApplication::applicationName();
 	QSettings regSettings(REG_RUN, QSettings::NativeFormat);
 	QString appPath = QApplication::applicationFilePath();
@@ -63,4 +69,8 @@ void Wallpaper::quitSlot()
 void Wallpaper::showNameSlot(QString name)
 {
 	actName->setText(name);
+}
+void Wallpaper::updateSlot()
+{
+	wallpaperGet->updateData();
 }

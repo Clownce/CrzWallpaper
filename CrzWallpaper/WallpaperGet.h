@@ -18,6 +18,7 @@ class WallpaperGet : public QObject
 
 public:
 	void setWallpaper();
+	void updateData();
 	WallpaperGet(QObject *parent = 0);
 	~WallpaperGet();
 

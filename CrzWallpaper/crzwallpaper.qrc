@@ -4,5 +4,6 @@
         <file>Resources/quit.png</file>
         <file>Resources/startupoff.png</file>
         <file>Resources/startupon.png</file>
+        <file>Resources/update.png</file>
     </qresource>
 </RCC>

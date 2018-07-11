@@ -14,6 +14,10 @@ WallpaperGet::WallpaperGet(QObject *parent)
 WallpaperGet::~WallpaperGet()
 {
 }
+void WallpaperGet::updateData()
+{
+	managerXML->get(QNetworkRequest(QUrl("http://cn.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1")));
+}
 void WallpaperGet::timeOut()
 {
 	managerXML->get(QNetworkRequest(QUrl("http://cn.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1")));

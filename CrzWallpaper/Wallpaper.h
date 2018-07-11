@@ -26,10 +26,12 @@ private:
 	QAction *actQuit;
 	QAction *actStartup;
 	QAction *actName;
+	QAction *actUpdate;
 private slots:
 	void quitSlot();
 	void startupSlot();
 	void showNameSlot(QString name);
+	void updateSlot();
 };
 
 #endif // WALLPAPER_H

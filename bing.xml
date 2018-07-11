@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<images>
+  <image>
+    <startdate>20180709</startdate>
+    <fullstartdate>201807090900</fullstartdate>
+	<enddate>20180710</enddate>
+	<url>/az/hprichbg/rb/FremontPeak_ZH-CN8041302763_1366x768.jpg</url>
+	<urlBase>/az/hprichbg/rb/FremontPeak_ZH-CN8041302763</urlBase>
+	<copyright>坐落于布里杰-蒂顿国家森林里的弗里蒙特峰的景色，美国怀俄明 (? Don Paulson/Danita Delimont)</copyright>
+	<copyrightlink>http://www.bing.com/search?q=%E5%BC%97%E9%87%8C%E8%92%99%E7%89%B9%E5%B3%B0&amp;form=hpcapt&amp;mkt=zh-cn</copyrightlink>
+	<drk>1</drk>
+	<top>1</top>
+	<bot>1</bot>
+	<hotspots></hotspots>
+    </image>
+	<tooltips>
+	  <loadMessage>
+		<message>正在加载...</message>
+	  </loadMessage>
+	  <previousImage>
+		<text>上一个图</text>
+	  </previousImage>
+	  <nextImage>
+		<text>下一个图</text>
+	  </nextImage>
+	  <play>
+		<text>播放视频</text>
+	  </play>
+	  <pause>
+		<text>暂停视频</text>
+	  </pause>
+	</tooltips>
+</images>"
