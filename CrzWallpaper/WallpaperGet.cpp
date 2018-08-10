@@ -9,6 +9,8 @@ WallpaperGet::WallpaperGet(QObject *parent)
 	managerXML = new QNetworkAccessManager(this);
 	managerIMG = new QNetworkAccessManager(this);
 	m_Timer = new QTimer(this);
+	m_savePathJpg = "";
+	m_savePathBmp = "";
 	connect(managerXML, SIGNAL(finished(QNetworkReply*)), this, SLOT(replayFinished(QNetworkReply*)));
 	connect(m_Timer, SIGNAL(timeout()), this, SLOT(timeOut()));
 }
@@ -48,8 +50,15 @@ void WallpaperGet::replayFinished(QNetworkReply *reply)
 	copyright = getMidStr(all, "<copyright>", "</copyright>");
 	emit transNameSig(copyright);
 	QDir dir;
-	dir.mkdir("Wallpaper");
-	m_File = new QFile("./Wallpaper/img.jpg");
+	dir.setCurrent(QDir::homePath());
+	dir.cd("Documents");
+	dir.refresh();
+	m_savePathJpg = dir.absolutePath();
+	m_savePathBmp = m_savePathJpg;
+	dir.mkdir("CrzWallpaper");
+	m_savePathJpg += "/CrzWallpaper/wallpaper.jpg";
+	m_savePathBmp += "/CrzWallpaper/wallpaper.bmp";
+	m_File = new QFile(m_savePathJpg);
 	if (!m_File->open(QIODevice::WriteOnly)) return;
 	m_Reply = managerIMG->get(QNetworkRequest(QUrl(data)));
 	connect(m_Reply, SIGNAL(finished()), this, SLOT(downloadFinished()));
@@ -68,10 +77,10 @@ void WallpaperGet::downloadFinished()
 	delete m_File;
 	m_File = 0;
 	QImage img;
-	img.load("./Wallpaper/img.jpg");
-	img.save("./Wallpaper/img.bmp");
-	QFileInfo fileInfo("./Wallpaper/img.bmp");
-	std::string sStr= fileInfo.absoluteFilePath().toStdString();
+	img.load(m_savePathJpg);
+	img.save(m_savePathBmp);
+	//QFileInfo fileInfo("./Wallpaper/img.bmp");
+	std::string sStr= m_savePathBmp.toStdString();
 	USES_CONVERSION;
 	PWSTR pStr = A2W(sStr.c_str());
 	WallpaperConfig wallConfig;

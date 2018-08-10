@@ -29,6 +29,7 @@ private:
 	QNetworkReply *m_Reply;
 	QFile *m_File;
 	QTimer *m_Timer;
+	QString m_savePathJpg,m_savePathBmp;
 	QString getMidStr(QString all, QString start, QString end);
 private slots:
 	void replayFinished(QNetworkReply *);
