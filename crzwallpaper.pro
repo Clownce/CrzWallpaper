@@ -9,7 +9,7 @@ QT       += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 RC_ICONS = app.ico
-VERSION = 1.5.0.0
+VERSION = 1.6.0.0
 QMAKE_TARGET_PRODUCT = CrzWallpaper
 QMAKE_TARGET_COMPANY = Clownce
 QMAKE_TARGET_COPYRIGHT = Copyright(C) 2024 Clownce

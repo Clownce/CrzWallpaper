@@ -20,17 +20,8 @@ class WallpaperGet : public QObject
 public:
 	void setWallpaper();
 	void updateData();
-	WallpaperGet(QObject *parent = 0);
+    WallpaperGet(QObject *parent = nullptr);
 	~WallpaperGet();
-
-private:
-	QNetworkAccessManager *managerXML;
-	QNetworkAccessManager *managerIMG;
-	QNetworkReply *m_Reply;
-	QFile *m_File;
-	QTimer *m_Timer;
-	QString m_savePathJpg,m_savePathBmp;
-	QString getMidStr(QString all, QString start, QString end);
 private slots:
 	void replayFinished(QNetworkReply *);
 	void readyRead();
@@ -38,6 +29,16 @@ private slots:
 	void timeOut();
 signals:
 	void transNameSig(QString);
+private:
+    QString getMidStr(QString all, QString start, QString end);
+private:
+    QNetworkAccessManager *managerXML;
+    QNetworkAccessManager *managerIMG;
+    QNetworkReply *m_Reply;
+    QFile *m_File;
+    QTimer *m_Timer;
+    QString m_savePathJpg,m_savePathBmp;
+    QString mBingUrl;
 };
 
 #endif // WALLPAPERGET_H

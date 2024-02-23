@@ -3,7 +3,6 @@
 Wallpaper::Wallpaper(QObject *parent)
     : QSystemTrayIcon(parent)
 {
-    isStartup = true;
     REG_RUN = "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run";
     this->setIcon(QIcon(":/crzwallpaper/resources/cat.png"));
     this->setToolTip("CrzWallpaper");
@@ -15,8 +14,6 @@ Wallpaper::Wallpaper(QObject *parent)
     actQuit->setIcon(QIcon(":/crzwallpaper/resources/quit.png"));
     actStartup = new QAction(menu);
     actStartup->setText("开机启动");
-    actStartup->setToolTip("已设置开机启动");
-    actStartup->setIcon(QIcon(":/crzwallpaper/resources/startupon.png"));
     actName = new QAction(menu);
     actName->setEnabled(false);
     actUpdate = new QAction(menu);
@@ -36,12 +33,21 @@ Wallpaper::Wallpaper(QObject *parent)
 
     QString appName = QApplication::applicationName();
     QSettings regSettings(REG_RUN, QSettings::NativeFormat);
-    QString appPath = QApplication::applicationFilePath();
-    regSettings.setValue(appName, appPath.replace("/", "\\"));
+    if (regSettings.contains(appName)) {
+        isStartup = true;
+        actStartup->setIcon(QIcon(":/crzwallpaper/resources/startupon.png"));
+        actStartup->setToolTip("已设置开机启动");
+    } else {
+        isStartup = false;
+        actStartup->setIcon(QIcon(":/crzwallpaper/resources/startupoff.png"));
+        actStartup->setToolTip("已取消开机启动");
+    }
 }
+
 Wallpaper::~Wallpaper()
 {
 }
+
 void Wallpaper::startupSlot()
 {
     QString appName = QApplication::applicationName();
@@ -52,9 +58,7 @@ void Wallpaper::startupSlot()
         actStartup->setIcon(QIcon(":/crzwallpaper/resources/startupoff.png"));
         actStartup->setToolTip("已取消开机启动");
         isStartup = false;
-    }
-    else
-    {
+    } else {
         QString appPath = QApplication::applicationFilePath();
         regSettings.setValue(appName, appPath.replace("/", "\\"));
         actStartup->setIcon(QIcon(":/crzwallpaper/resources/startupon.png"));
@@ -62,14 +66,17 @@ void Wallpaper::startupSlot()
         isStartup = true;
     }
 }
+
 void Wallpaper::quitSlot()
 {
     QApplication::quit();
 }
+
 void Wallpaper::showNameSlot(QString name)
 {
     actName->setText(name);
 }
+
 void Wallpaper::updateSlot()
 {
     wallpaperGet->updateData();

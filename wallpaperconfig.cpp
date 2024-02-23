@@ -3,9 +3,11 @@
 WallpaperConfig::WallpaperConfig()
 {
 }
+
 WallpaperConfig::~WallpaperConfig()
 {
 }
+
 //https://blog.csdn.net/zy_dreamer/article/details/8877857?utm_source=tuicool
 //   FUNCTION: SetDesktopWallpaper(PCWSTR, WallpaperStyle)
 //
@@ -24,9 +26,10 @@ PWSTR WallpaperConfig::formatValue(std::string str)
     MultiByteToWideChar(CP_ACP, 0, string.c_str(), size, buffer, size * sizeof(wchar_t));
     buffer[size] = 0;
     pwstr = buffer;
-    delete buffer;
+    delete[] buffer;
     return pwstr;
 }
+
 HRESULT WallpaperConfig::SetDesktopWallpaper(PWSTR pszFile, WallpaperStyle style)
 {
 	HRESULT hr = S_OK;
