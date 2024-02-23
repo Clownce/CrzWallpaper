@@ -1,5 +1,5 @@
 #include <QApplication>
-#include "Wallpaper.h"
+#include "wallpaper.h"
 
 int main(int argc, char *argv[])
 {

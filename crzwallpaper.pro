@@ -12,21 +12,21 @@ RC_ICONS = app.ico
 VERSION = 1.5.0.0
 QMAKE_TARGET_PRODUCT = CrzWallpaper
 QMAKE_TARGET_COMPANY = Clownce
-QMAKE_TARGET_COPYRIGHT = Copyright(C) 2019 Clownce
+QMAKE_TARGET_COPYRIGHT = Copyright(C) 2024 Clownce
 
 TARGET = CrzWallpaper
 TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    Wallpaper.cpp \
-    WallpaperConfig.cpp \
-    WallpaperGet.cpp
+    wallpaper.cpp \
+    wallpaperconfig.cpp \
+    wallpaperget.cpp
 
 HEADERS  += \
-    Wallpaper.h \
-    WallpaperConfig.h \
-    WallpaperGet.h
+    wallpaper.h \
+    wallpaperconfig.h \
+    wallpaperget.h
 
 RESOURCES += \
     crzwallpaper.qrc

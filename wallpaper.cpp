@@ -1,27 +1,27 @@
-﻿#include "Wallpaper.h"
+﻿#include "wallpaper.h"
 
 Wallpaper::Wallpaper(QObject *parent)
     : QSystemTrayIcon(parent)
 {
     isStartup = true;
     REG_RUN = "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run";
-    this->setIcon(QIcon(":/CrzWallpaper/Resources/cat.png"));
+    this->setIcon(QIcon(":/crzwallpaper/resources/cat.png"));
     this->setToolTip("CrzWallpaper");
     wallpaperGet = new WallpaperGet;
     menu = new QMenu();
     actQuit = new QAction(menu);
     actQuit->setText("退出");
     actQuit->setToolTip("退出");
-    actQuit->setIcon(QIcon(":/CrzWallpaper/Resources/quit.png"));
+    actQuit->setIcon(QIcon(":/crzwallpaper/resources/quit.png"));
     actStartup = new QAction(menu);
     actStartup->setText("开机启动");
     actStartup->setToolTip("已设置开机启动");
-    actStartup->setIcon(QIcon(":/CrzWallpaper/Resources/startupon.png"));
+    actStartup->setIcon(QIcon(":/crzwallpaper/resources/startupon.png"));
     actName = new QAction(menu);
     actName->setEnabled(false);
     actUpdate = new QAction(menu);
     actUpdate->setText("刷新");
-    actUpdate->setIcon(QIcon(":/CrzWallpaper/Resources/update.png"));
+    actUpdate->setIcon(QIcon(":/crzwallpaper/resources/update.png"));
     menu->addAction(actName);
     menu->addSeparator();
     menu->addAction(actUpdate);
@@ -49,7 +49,7 @@ void Wallpaper::startupSlot()
     if (isStartup)
     {
         regSettings.remove(appName);
-        actStartup->setIcon(QIcon(":/CrzWallpaper/Resources/startupoff.png"));
+        actStartup->setIcon(QIcon(":/crzwallpaper/resources/startupoff.png"));
         actStartup->setToolTip("已取消开机启动");
         isStartup = false;
     }
@@ -57,7 +57,7 @@ void Wallpaper::startupSlot()
     {
         QString appPath = QApplication::applicationFilePath();
         regSettings.setValue(appName, appPath.replace("/", "\\"));
-        actStartup->setIcon(QIcon(":/CrzWallpaper/Resources/startupon.png"));
+        actStartup->setIcon(QIcon(":/crzwallpaper/resources/startupon.png"));
         actStartup->setToolTip("已设置开机启动");
         isStartup = true;
     }

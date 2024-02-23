@@ -1,5 +1,5 @@
-﻿#include "WallpaperGet.h"
-#include "WallpaperConfig.h"
+﻿#include "wallpaperget.h"
+#include "wallpaperconfig.h"
 #include <atlbase.h>
 #include <atlconv.h>
 
@@ -20,15 +20,15 @@ WallpaperGet::~WallpaperGet()
 }
 void WallpaperGet::updateData()
 {
-	managerXML->get(QNetworkRequest(QUrl("http://cn.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1")));
+    managerXML->get(QNetworkRequest(QUrl("https://cn.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1")));
 }
 void WallpaperGet::timeOut()
 {
-	managerXML->get(QNetworkRequest(QUrl("http://cn.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1")));
+    managerXML->get(QNetworkRequest(QUrl("https://cn.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1")));
 }
 void WallpaperGet::setWallpaper()
 {
-	managerXML->get(QNetworkRequest(QUrl("http://cn.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1")));
+    managerXML->get(QNetworkRequest(QUrl("https://cn.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1")));
 	m_Timer->start(3600000);
 }
 QString WallpaperGet::getMidStr(QString all, QString start, QString end)
@@ -43,7 +43,7 @@ QString WallpaperGet::getMidStr(QString all, QString start, QString end)
 void WallpaperGet::replayFinished(QNetworkReply *reply)
 {
 	QString all = QString(reply->readAll());//一个XML文件
-	QString data = "http://cn.bing.com";//生成真正图片地址
+    QString data = "https://cn.bing.com";//生成真正图片地址
 	data.append(getMidStr(all, "<url>", "</url>"));
 	data.replace("1366x768", "1920x1080");
 	QString copyright = "";

@@ -1,4 +1,4 @@
-﻿#include "WallpaperConfig.h"
+﻿#include "wallpaperconfig.h"
 
 WallpaperConfig::WallpaperConfig()
 {
